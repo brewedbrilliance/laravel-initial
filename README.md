@@ -2,6 +2,7 @@
 
 This is a bootsrapp laravel application on docker-compose for speeding up your environment setup offered by  [BrewedBrilliance](https://brewedbrilliance.net):
 
+Full article here [https://brewedbrilliance.net/bootstrap-your-laravel-application-on-docker/](https://brewedbrilliance.net/bootstrap-your-laravel-application-on-docker/)
 
 # Prerequisites
 
@@ -27,4 +28,4 @@ example
 The script will start all the procedurs for creating the docker containers, setting up the database and run composer for creating the laravel project and wait the database to be ready for running the migrations
 
 ## More information
-More information can be found on [BrewedBrilliance](https://brewedbrilliance.net):
+More information can be found on [BrewedBrilliance](https://brewedbrilliance.net)
