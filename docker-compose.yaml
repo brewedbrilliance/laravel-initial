@@ -1,0 +1,41 @@
+version: '3.1'
+
+services:
+  # MySQL database service
+  db:
+    image: mysql
+    container_name: mysql_db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: laravel
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: admin
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  # Laravel application service
+  laravel:
+    build: 
+      context: ./laravel_img
+      dockerfile: Dockerfile
+    container_name: ${PROJ_NAME}
+    restart: unless-stopped
+    depends_on:
+      - db
+    volumes:
+      - ${DEVELOPMENT_FOLDER}:${MOUNT_PATH}
+    ports:
+      - "${DEVELOPMENT_PORT}:80"
+    environment:
+      DB_CONNECTION: mysql
+      DB_HOST: mysql_db
+      DB_DATABASE: laravel
+      DB_USERNAME: laravel
+      DB_PASSWORD: admin
+    
+volumes:
+  db_data:
+
